@@ -1,16 +1,20 @@
 package co.edu.uptc.model;
 
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Towers {
 
-	private Stack<Integer> towerOne, towerTwo, towerThree;
+	private Stack<Integer> towerOne;
+	private Stack<Integer> towerTwo;
+	private Stack<Integer> towerThree;
 
 	public Towers() {
 		towerOne = new Stack<Integer>();
 		towerTwo = new Stack<Integer>();
 		towerThree = new Stack<Integer>();
 		towerOneDisks();
+		prueba();
 	}
 
 	public void towerOneDisks() {
@@ -102,6 +106,28 @@ public class Towers {
 			}
 		}
 		return false;
+	}
+
+	public Stack<Integer> getTowerOne() {
+		return towerOne;
+	}
+
+	public Stack<Integer> getTowerTwo() {
+		return towerTwo;
+	}
+
+	public Stack<Integer> getTowerThree() {
+		return towerThree;
+	}
+
+	public void prueba() {
+		do {
+			compareDisks(3, 1);
+			System.out.println(towerOne);
+			System.out.println(towerTwo);
+			System.out.println(towerThree);
+		} while (true);
+
 	}
 
 }
