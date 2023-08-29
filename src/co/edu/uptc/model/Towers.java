@@ -1,133 +1,67 @@
 package co.edu.uptc.model;
 
-import java.util.Scanner;
 import java.util.Stack;
 
 public class Towers {
 
-	private Stack<Integer> towerOne;
-	private Stack<Integer> towerTwo;
-	private Stack<Integer> towerThree;
+    private Stack<Integer> towerOne;
+    private Stack<Integer> towerTwo;
+    private Stack<Integer> towerThree;
 
-	public Towers() {
-		towerOne = new Stack<Integer>();
-		towerTwo = new Stack<Integer>();
-		towerThree = new Stack<Integer>();
-		towerOneDisks();
-		prueba();
-	}
+    public Towers() {
+        towerOne = new Stack<Integer>();
+        towerTwo = new Stack<Integer>();
+        towerThree = new Stack<Integer>();
+        initializeTowerOneDisks();
+    }
 
-	public void towerOneDisks() {
-		towerOne.push(3);
-		towerOne.push(2);
-		towerOne.push(1);
-	}
+    public void initializeTowerOneDisks() {
+        towerOne.push(3);
+        towerOne.push(2);
+        towerOne.push(1);
+    }
 
-	public int compareDisks(int selectedDisk, int numberTower) {
-		int signal = 0;
-		switch (numberTower) {
-		case 1:
-			signal = analyzeTowerOne(selectedDisk, numberTower) ? 1 : -1;
-			break;
-		case 2:
-			signal = analyzeTowerTwo(selectedDisk, numberTower) ? 1 : -1;
-			break;
-		case 3:
-			signal = analyzeTowerThree(selectedDisk, numberTower) ? 1 : -1;
-			break;
-		}
-		return signal;
-	}
+    public boolean moveDisk(int selectedDisk, int targetTower) {
+        Stack<Integer> sourceTower;
+        Stack<Integer> targetTowerStack;
 
-	public boolean analyzeTowerOne(int selectedDisk, int numberTower) {
-		if (towerOne.empty()) {
-			towerOne.push(selectedDisk);
-			if (towerTwo.contains(selectedDisk)) {
-				towerTwo.pop();
-			} else {
-				towerThree.pop();
-			}
-			return true;
-		} else {
-			if (selectedDisk < towerOne.peek()) {
-				towerOne.push(selectedDisk);
-				if (towerTwo.contains(selectedDisk)) {
-					towerTwo.pop();
-				} else {
-					towerThree.pop();
-				}
-				return true;
-			}
-		}
-		return false;
-	}
+        switch (targetTower) {
+            case 1:
+                sourceTower = towerTwo;
+                targetTowerStack = towerOne;
+                break;
+            case 2:
+                sourceTower = towerTwo;
+                targetTowerStack = towerTwo;
+                break;
+            case 3:
+                sourceTower = towerThree;
+                targetTowerStack = towerThree;
+                break;
+            default:
+                return false;
+        }
 
-	public boolean analyzeTowerTwo(int selectedDisk, int numberTower) {
-		if (towerTwo.empty()) {
-			towerTwo.push(selectedDisk);
-			if (towerOne.contains(selectedDisk)) {
-				towerOne.pop();
-			} else {
-				towerThree.pop();
-			}
-			return true;
-		} else {
-			if (selectedDisk < towerTwo.peek()) {
-				towerTwo.push(selectedDisk);
-				if (towerOne.contains(selectedDisk)) {
-					towerOne.pop();
-				} else {
-					towerThree.pop();
-				}
-				return true;
-			}
-		}
-		return false;
-	}
+        if (targetTowerStack.isEmpty() || selectedDisk < targetTowerStack.peek()) {
+            targetTowerStack.push(selectedDisk);
+            if (!sourceTower.isEmpty() && sourceTower.peek() == selectedDisk) {
+                sourceTower.pop();
+            }
+            return true;
+        }
+        
+        return false;
+    }
 
-	public boolean analyzeTowerThree(int selectedDisk, int numberTower) {
-		if (towerThree.empty()) {
-			towerThree.push(selectedDisk);
-			if (towerTwo.contains(selectedDisk)) {
-				towerTwo.pop();
-			} else {
-				towerOne.pop();
-			}
-			return true;
-		} else {
-			if (selectedDisk < towerThree.peek()) {
-				towerThree.push(selectedDisk);
-				if (towerTwo.contains(selectedDisk)) {
-					towerTwo.pop();
-				} else {
-					towerOne.pop();
-				}
-				return true;
-			}
-		}
-		return false;
-	}
+    public Stack<Integer> getTowerOne() {
+        return towerOne;
+    }
 
-	public Stack<Integer> getTowerOne() {
-		return towerOne;
-	}
+    public Stack<Integer> getTowerTwo() {
+        return towerTwo;
+    }
 
-	public Stack<Integer> getTowerTwo() {
-		return towerTwo;
-	}
-
-	public Stack<Integer> getTowerThree() {
-		return towerThree;
-	}
-
-	public void prueba() {
-		do {
-			compareDisks(3, 1);
-			System.out.println(towerOne);
-			System.out.println(towerTwo);
-			System.out.println(towerThree);
-		} while (true);
-
-	}
-
+    public Stack<Integer> getTowerThree() {
+        return towerThree;
+    }
 }
