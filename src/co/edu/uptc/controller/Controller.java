@@ -28,8 +28,8 @@ public class Controller {
 
 	
 
-	public int compareDisks(int selectedDisk, int numberTower) {
-		return towers.compareDisks(selectedDisk, numberTower);
+	public boolean compareDisks(int selectedDisk, int numberTower) {
+		return towers.moveDisk(selectedDisk, numberTower);
 	}
 
 	public Stack<Integer> getTowerOneController() {
