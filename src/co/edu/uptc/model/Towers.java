@@ -3,65 +3,42 @@ package co.edu.uptc.model;
 import java.util.Stack;
 
 public class Towers {
+    private Stack<Integer> towerA = new Stack<>();
+    private Stack<Integer> towerB = new Stack<>();
+    private Stack<Integer> towerC = new Stack<>();
+    private int numDiscs;
 
-    private Stack<Integer> towerOne;
-    private Stack<Integer> towerTwo;
-    private Stack<Integer> towerThree;
-
-    public Towers() {
-        towerOne = new Stack<Integer>();
-        towerTwo = new Stack<Integer>();
-        towerThree = new Stack<Integer>();
-        initializeTowerOneDisks();
-    }
-
-    public void initializeTowerOneDisks() {
-        towerOne.push(3);
-        towerOne.push(2);
-        towerOne.push(1);
-    }
-
-    public boolean moveDisk(int selectedDisk, int targetTower) {
-        Stack<Integer> sourceTower;
-        Stack<Integer> targetTowerStack;
-
-        switch (targetTower) {
-            case 1:
-                sourceTower = towerTwo;
-                targetTowerStack = towerOne;
-                break;
-            case 2:
-                sourceTower = towerTwo;
-                targetTowerStack = towerTwo;
-                break;
-            case 3:
-                sourceTower = towerThree;
-                targetTowerStack = towerThree;
-                break;
-            default:
-                return false;
+    public Towers(int numDiscs) {
+        this.numDiscs = numDiscs;
+        for (int i = numDiscs; i > 0; i--) {
+            towerA.push(i);
         }
+    }
 
-        if (targetTowerStack.isEmpty() || selectedDisk < targetTowerStack.peek()) {
-            targetTowerStack.push(selectedDisk);
-            if (!sourceTower.isEmpty() && sourceTower.peek() == selectedDisk) {
-                sourceTower.pop();
-            }
-            return true;
+    public Stack<Integer> getTowerA() {
+        return towerA;
+    }
+
+    public Stack<Integer> getTowerB() {
+        return towerB;
+    }
+
+    public Stack<Integer> getTowerC() {
+        return towerC;
+    }
+
+    public boolean moveDisk(Stack<Integer> source, Stack<Integer> destination) {
+        if (source.isEmpty() || (!destination.isEmpty() && source.peek() > destination.peek())) {
+            return false;
         }
         
-        return false;
+        destination.push(source.pop());
+        return true;
     }
 
-    public Stack<Integer> getTowerOne() {
-        return towerOne;
+    public boolean won() {
+        return towerA.isEmpty() && towerB.isEmpty() && towerC.size() == numDiscs;
     }
-
-    public Stack<Integer> getTowerTwo() {
-        return towerTwo;
-    }
-
-    public Stack<Integer> getTowerThree() {
-        return towerThree;
-    }
+    
+    
 }

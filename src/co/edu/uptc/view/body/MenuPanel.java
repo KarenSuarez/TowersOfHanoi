@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.view.constants.ColorConstants;
 import co.edu.uptc.view.constants.FontConstants;
+import co.edu.uptc.view.constants.TextConstants;
 
 public class MenuPanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class MenuPanel extends JPanel {
         gbcTitle.gridy = 0;
         gbcTitle.weighty = 0.5; 
         gbcTitle.anchor = GridBagConstraints.CENTER;
-        title = new JLabel("Towers Of Hanoi");
+        title = new JLabel(TextConstants.TITLE_TEXT);
         title.setFont(FontConstants.PUCK_BOLD_BOLD_FONT_65);
         title.setForeground(Color.WHITE);
         this.add(title, gbcTitle);

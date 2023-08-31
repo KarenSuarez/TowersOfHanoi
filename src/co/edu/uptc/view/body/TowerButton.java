@@ -18,15 +18,10 @@ public class TowerButton extends JButton{
 	
 	public void initComponents() {
 		JPanel panel1 = new JPanel(); 
-		panel1.setBackground(Color.BLUE);
-		
-		
+		panel1.setBackground(Color.BLUE);	
 		
 		JPanel panel2 = new JPanel(); 
 		panel2.setBackground(Color.CYAN);
-		
-		
-		
 	}
 
 }
