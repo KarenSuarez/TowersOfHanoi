@@ -40,5 +40,4 @@ public class Towers {
         return towerA.isEmpty() && towerB.isEmpty() && towerC.size() == numDiscs;
     }
     
-    
-}
+

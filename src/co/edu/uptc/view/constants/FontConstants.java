@@ -4,12 +4,6 @@ import java.awt.Font;
 
 public final class FontConstants {
 
-	public static final Font PUCK_BOLD_PLAIN_FONT_12 = new Font("Puck Bold", Font.PLAIN, 12);
-	public static final Font PUCK_BOLD_BOLD_FONT_12 = new Font("Puck Bold", Font.BOLD, 12);
-	public static final Font PUCK_BOLD_PLAIN_FONT_14 = new Font("Puck Bold", Font.PLAIN, 14);
-	public static final Font PUCK_BOLD_BOLD_FONT_14 = new Font("Puck Bold", Font.BOLD, 14);
-	public static final Font PUCK_BOLD_PLAIN_FONT_15 = new Font("Puck Bold", Font.PLAIN, 15);
-	public static final Font PUCK_BOLD_BOLD_FONT_15 = new Font("Puck Bold", Font.BOLD, 15);
 	public static final Font PUCK_BOLD_PLAIN_FONT_16 = new Font("Puck Bold", Font.PLAIN, 16);
 	public static final Font PUCK_BOLD_BOLD_FONT_16 = new Font("Puck Bold", Font.BOLD, 16);
 	public static final Font PUCK_BOLD_PLAIN_FONT_18 = new Font("Puck Bold", Font.PLAIN, 18);
@@ -22,6 +16,8 @@ public final class FontConstants {
 	public static final Font PUCK_BOLD_BOLD_FONT_26 = new Font("Puck Bold", Font.BOLD, 26);
 	public static final Font PUCK_BOLD_PLAIN_FONT_30 = new Font("Puck Bold", Font.PLAIN, 30);
 	public static final Font PUCK_BOLD_BOLD_FONT_30 = new Font("Puck Bold", Font.BOLD, 30);
+	public static final Font PUCK_BOLD_PLAIN_FONT_45 = new Font("Puck Bold", Font.PLAIN, 45);
+	public static final Font PUCK_BOLD_BOLD_FONT_45 = new Font("Puck Bold", Font.BOLD, 45);
 	public static final Font PUCK_BOLD_PLAIN_FONT_65 = new Font("Puck Bold", Font.PLAIN, 65);
 	public static final Font PUCK_BOLD_BOLD_FONT_65 = new Font("Puck Bold", Font.BOLD, 65);
 

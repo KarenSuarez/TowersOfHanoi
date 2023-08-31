@@ -6,7 +6,9 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
+import co.edu.uptc.view.PrincipalFrame;
 import co.edu.uptc.view.constants.ColorConstants;
 import co.edu.uptc.view.constants.FontConstants;
 import co.edu.uptc.view.utilities.RoundedButton;
@@ -35,9 +37,19 @@ public class MenuButtonPanel extends JPanel {
         
 		RoundedButton.makeRounded(btnPlay, "     Play     ", 20, ColorConstants.RED, ColorConstants.LIGHT_BLUE, Color.WHITE,
 				FontConstants.PUCK_BOLD_BOLD_FONT_30, 450, 80);
+		
+		btnPlay.addActionListener(e -> {
+		    PrincipalFrame parentFrame1 = (PrincipalFrame) SwingUtilities.getWindowAncestor(this);
+		    parentFrame1.showTowersPanel();
+		});
 
 		RoundedButton.makeRounded(btnInstructions, "     Instructions     ", 20, ColorConstants.YELLOW, ColorConstants.LIGHT_BLUE,
 				Color.WHITE, FontConstants.PUCK_BOLD_BOLD_FONT_30, 600, 80);
+		
+		btnInstructions.addActionListener(e -> {
+		    PrincipalFrame parentFrame = (PrincipalFrame) SwingUtilities.getWindowAncestor(this);
+		    parentFrame.showInstructionsPanel();
+		});
 		
 		RoundedButton.makeRounded(btnAboutUs, "           About Us            ", 20, ColorConstants.PURPLE, ColorConstants.LIGHT_BLUE,
 				Color.WHITE, FontConstants.PUCK_BOLD_BOLD_FONT_30, 800, 80);
